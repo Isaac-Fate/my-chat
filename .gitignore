@@ -1,0 +1,27 @@
+# MacOS
+**/.DS_Store
+
+# Python
+**/__pycache__
+
+# Jupyter Notebook
+**/.ipynb_checkpoints
+/notebooks
+
+# Jupyter Book
+**/_build
+
+# Playground
+/playground
+
+# Large data dir
+/data
+
+# Temporary directory
+/tmp
+
+# Output directory
+/out
+
+# Secret configuration file
+config.toml

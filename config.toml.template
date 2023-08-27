@@ -1,0 +1,14 @@
+# Project root directory
+PROJECT_ROOT_DIR = "<Project root directory>"
+
+# OpenAI API key
+OPENAI_API_KEY = "<Your OpenAI API key>"
+
+[mongo]
+host = "localhost"
+port = 27017
+database_name = "<Name of the database>"
+
+[qdrant]
+host = "localhost"
+port = 6333
