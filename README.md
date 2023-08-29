@@ -46,6 +46,6 @@ This chatbot offers a solution.
 In this demonstration, the chatbot takes on the role of a chef well-versed in a myriad of recipes. 
 I can effortlessly inquire about the preparation of any particular dish.
 
-Click the screenshot below to watch a video demo:
+Click the thumbnail below to watch a video demo:
 
-[![Chatbot in the Role of a Cook](https://i9.ytimg.com/vi_webp/hCRuXA-vi-E/mq1.webp?sqp=CNCesacG-oaymwEmCMACELQB8quKqQMa8AEB-AG4CYAC0AWKAgwIABABGGUgZShlMA8=&rs=AOn4CLA6HDVEYjDewHfwNjIMuo76kYsU1g)](https://www.youtube.com/watch?v=hCRuXA-vi-E)
+[![Chatbot in the Role of a Cook](./assets/thumbnail.png)](https://www.youtube.com/watch?v=hCRuXA-vi-E)
