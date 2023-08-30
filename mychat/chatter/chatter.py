@@ -27,6 +27,7 @@ class Chatter:
             note_manager: NoteManager,
             num_notes_limit: int = 5,
             chat_history_manager: ChatHistoryManager = ChatHistoryManager(),
+            do_use_domain_knowledge: bool = False,
             stream: bool = False
         ) -> None:
         
@@ -34,25 +35,35 @@ class Chatter:
         self._note_manager = note_manager
         self._num_notes_limit = num_notes_limit
         self._chat_history_manager = chat_history_manager
+        self._do_use_domain_knowledge = do_use_domain_knowledge
         self._stream = stream
     
     def __call__(self, query: str) -> str | Generator:
         
-        # Get response from AI
-        response = openai_chat(
-            messages=[
-                SystemMessage(polish_profile(self._profile)),
-                *self._chat_history_manager.messages,
-                UserMessage(
-                    self.include_notes_in_prompt(query)
-                )
-            ],
-            stream=self._stream
-        )
-        
         # Insert user's query
         self._chat_history_manager.insert_message(
             UserMessage(query)
+        )
+        
+        # Prepare messages
+        messages=[
+            SystemMessage(polish_profile(self._profile)),
+            *self._chat_history_manager.messages
+        ]
+        
+        # Add notes in the prompt if 
+        # the domain knowledge is required
+        if self.do_use_domain_knowledge:
+            messages.append(
+                UserMessage(
+                    self.include_notes_in_prompt(query)
+                )
+            )
+        
+        # Get response from AI
+        response = openai_chat(
+            messages=messages,
+            stream=self._stream
         )
         
         # Insert AI's response
@@ -74,6 +85,14 @@ class Chatter:
     @profile.setter
     def profile(self, new_profile: str) -> None:
         self._profile = new_profile
+    
+    @property
+    def do_use_domain_knowledge(self) -> bool:
+        return self._do_use_domain_knowledge
+    
+    @do_use_domain_knowledge.setter
+    def do_use_domain_knowledge(self, do_use: bool) -> None:
+        self._do_use_domain_knowledge = do_use
     
     @property
     def stream(self) -> bool:

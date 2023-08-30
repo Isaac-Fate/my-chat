@@ -20,15 +20,13 @@ def get_avatar(role: ChatRole) -> str:
         case ChatRole.Assistant:
             return "🤖"
 
-def chat(chatter: Chatter):
+def chat():
 
     # App title
     st.title("My Chatbot 🤖")
-
-    # Get chatter
-    if "chatter" not in st.session_state:
-        st.session_state.chatter = chatter
-        
+    
+    # Get the chatter
+    assert hasattr(st.session_state, "chatter")
     chatter = st.session_state.chatter
     
     # Load history messages

@@ -12,8 +12,22 @@ def run_app(chatter: Chatter):
     )
     
     with st.sidebar:
+        
+        # Logo
         st.image(logo)
         st.divider()
+        
+        # Chatbot's profile
         profile_form()
         
-    chat(chatter)
+        # A switch determines
+        # whether to use domain knowledge, i.e., the notes
+        do_use_domain_knowledge = st.toggle("Use Domain Knowledge")
+        
+        # Set the chatter
+        if "chatter" not in st.session_state:
+            st.session_state.chatter = chatter
+        chatter = st.session_state.chatter
+        chatter.do_use_domain_knowledge = do_use_domain_knowledge
+        
+    chat()
