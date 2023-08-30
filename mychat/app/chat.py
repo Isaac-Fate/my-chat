@@ -16,14 +16,14 @@ def get_avatar(role: ChatRole) -> str:
     
     match role:
         case ChatRole.User:
-            return "😎"
+            return "😉"
         case ChatRole.Assistant:
             return "🤖"
 
 def chat():
 
     # App title
-    st.title("My Chatbot 🤖")
+    st.title("💕 Yuri's Chatbot 🤖")
     
     # Get the chatter
     assert hasattr(st.session_state, "chatter")
