@@ -8,7 +8,7 @@ from ..config import CONFIG
 def run_app(chatter: Chatter):
     
     logo = Image.open(
-        CONFIG.ASSETS_DIR.joinpath("robot").with_suffix(".jpg")
+        CONFIG.ASSETS_DIR.joinpath("cute-robot").with_suffix(".png")
     )
     
     with st.sidebar:
