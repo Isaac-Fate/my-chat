@@ -3,7 +3,8 @@ import openai
 import os
 from .schema import ChatMessage
 
-CHAT_MODEL_NAME = "gpt-3.5-turbo-16k"
+# CHAT_MODEL_NAME = "gpt-3.5-turbo-16k"
+CHAT_MODEL_NAME = "gpt-4"
 EMBEDDING_MODEL_NAME = "text-embedding-ada-002"
 
 def openai_chat(
