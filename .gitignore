@@ -25,3 +25,6 @@
 
 # Secret configuration file
 config.toml
+
+# Distribution files
+/*.egg-info

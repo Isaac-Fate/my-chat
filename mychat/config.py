@@ -4,6 +4,11 @@ from pathlib import Path
 import tomllib
 from xpyutils import lazy_property, singleton
 
+PROJECT_STORAGE_DIR = Path.home().joinpath(".mychat")
+
+EXISTING_CONFIG_FILENAME = "my-chat.conf"
+EXISTING_CONFIG_FILEPATH = PROJECT_STORAGE_DIR.joinpath(EXISTING_CONFIG_FILENAME)
+
 @singleton
 class Config:
     
@@ -64,6 +69,17 @@ class Config:
     def QDRANT_CONNECTION_STRING(self) -> str:
         
         return f"http://{self.QDRANT_HOST}:{self.QDRANT_PORT}"
+    
+    @lazy_property
+    def CHATTER_PROFILES_FILEPATH(self) -> Path:
+        """A file storing all available profiles of the chatter.
+        """
+        
+        profiles_filepath = self.ASSETS_DIR.joinpath("profiles").with_suffix(".toml")
+        assert profiles_filepath.is_file(),\
+            f"{profiles_filepath} does not exist"
+        
+        return profiles_filepath
 
 CONFIG = Config()
 
